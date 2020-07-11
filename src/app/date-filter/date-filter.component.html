@@ -1,0 +1,17 @@
+<h2>Filter on Dates from {{datefilter.start | date}} to {{datefilter.end | date}}</h2>
+<div>
+<label>Start Date:
+<input [(ngModel)]="datefilter.start" placeholder="start date"/>
+</label>
+<p>
+<label>End Date:
+<input [(ngModel)]="datefilter.end" placeholder="end date"/>
+</label>
+</div>
+
+<h2>Download Speeds</h2>
+<ul class="downloads">
+<li *ngFor = "let download of downloads">
+<span class="badge">At: {{download.datetime}} --- Download speed: {{download.down}}</span> - Upload speed: {{download.up}}
+</li>
+</ul>
