@@ -1,5 +1,5 @@
 export interface Download {
-  down: number;
-  up: number;
-  datetime: string;
+  download: number;
+  upload: number;
+  time: string;
 }

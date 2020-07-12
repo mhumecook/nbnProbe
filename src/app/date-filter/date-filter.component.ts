@@ -25,7 +25,12 @@ export class DateFilterComponent implements OnInit {
 
   getProbeData(): void {
 	  this.probeDataService.getProbeData()
-	        .subscribe(downloads => this.downloads = downloads);
+	        .subscribe(downloads => this.addDownloads(downloads));
+  }
+
+  addDownloads(addedDownloads: Download[]) {
+    console.log("Adding downloads");
+    this.downloads = addedDownloads;
   }
 
 }
