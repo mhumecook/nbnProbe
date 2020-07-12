@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateFilter } from '../date-filter';
-import { DOWNLOADS } from '../mock-downloads';
+import { Download } from '../download';
+import { ProbeDataService } from '../probe-data.service';
 
 @Component({
   selector: 'app-date-filter',
@@ -9,16 +10,22 @@ import { DOWNLOADS } from '../mock-downloads';
 })
 export class DateFilterComponent implements OnInit {
 
-  downloads = DOWNLOADS;
+  downloads: Download[];
 
   datefilter: DateFilter = {
     start: '2020-07-06 20:00:00',
     end: '2020-07-06 21:00:00'
   };
 
-  constructor() { }
+  constructor(private probeDataService: ProbeDataService) { }
 
   ngOnInit() {
+    this.getProbeData();
+  }
+
+  getProbeData(): void {
+	  this.probeDataService.getProbeData()
+	        .subscribe(downloads => this.downloads = downloads);
   }
 
 }
